@@ -1,0 +1,1147 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/8/2023 5:36:04 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-N3TDE4R"
+  DTS:CreatorName="DESKTOP-N3TDE4R\htc"
+  DTS:DTSID="{8A68ABEB-4862-4CEC-A18C-DC2BB314CFA7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DimFlight"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{F3C6B9DA-9A62-4D42-A372-E1C2AB8D9A2E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_DB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1D5F596E-57E0-4FAD-9E5D-26C7347D6434}"
+      DTS:ObjectName="DESKTOP-N3TDE4R.Airport_DB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-N3TDE4R;Initial Catalog=Airport_DB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-DimFlight-{1D5F596E-57E0-4FAD-9E5D-26C7347D6434}DESKTOP-N3TDE4R.Airport_DB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_Des1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{65A65ECA-1EB6-4A1D-980F-ECDA98BB69AB}"
+      DTS:ObjectName="DESKTOP-N3TDE4R.Airport_Des1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-N3TDE4R;Initial Catalog=Airport_Des1;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-DimFlight-{65A65ECA-1EB6-4A1D-980F-ECDA98BB69AB}DESKTOP-N3TDE4R.Airport_Des1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_STG1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B6957FF2-7C9D-449B-ADBB-1C45C00C77E4}"
+      DTS:ObjectName="DESKTOP-N3TDE4R.Airport_STG1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-N3TDE4R;Initial Catalog=Airport_STG1;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-DimFlight-{B6957FF2-7C9D-449B-ADBB-1C45C00C77E4}DESKTOP-N3TDE4R.Airport_STG1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dim"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{b497f2f7-805f-447e-aaf0-999e0e446afc}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Dim\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FlightDim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_Des1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_Des1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[flight num]"
+                      cachedDataType="i4"
+                      cachedName="flight num"
+                      externalMetadataColumnId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[flight num]"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[flight num]" />
+                    <inputColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[departure airport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="75"
+                      cachedName="departure airport"
+                      externalMetadataColumnId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departure airport]"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure airport]" />
+                    <inputColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[departure hour]"
+                      cachedDataType="dbTime2"
+                      cachedName="departure hour"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departure hour]"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure hour]" />
+                    <inputColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[arrival hour]"
+                      cachedDataType="dbTime2"
+                      cachedName="arrival hour"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrival hour]"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival hour]" />
+                    <inputColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[arrival airport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="75"
+                      cachedName="arrival airport"
+                      externalMetadataColumnId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrival airport]"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival airport]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[flight num]"
+                      dataType="i4"
+                      name="flight num" />
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departure airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="departure airport" />
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departure hour]"
+                      dataType="dbTime2"
+                      name="departure hour"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrival hour]"
+                      dataType="dbTime2"
+                      name="arrival hour"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrival airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="arrival airport" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Flight]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_STG1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_STG1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[flight num]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[flight num]"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[flight num]"
+                      name="flight num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure airport]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[departure airport]"
+                      length="75"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure airport]"
+                      name="departure airport"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure hour]"
+                      dataType="dbTime2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[departure hour]"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure hour]"
+                      name="departure hour"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival hour]"
+                      dataType="dbTime2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrival hour]"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival hour]"
+                      name="arrival hour"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival airport]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrival airport]"
+                      length="75"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival airport]"
+                      name="arrival airport"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[flight num]"
+                      dataType="i4"
+                      name="flight num" />
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[departure airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="departure airport" />
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[departure hour]"
+                      dataType="dbTime2"
+                      name="departure hour"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrival hour]"
+                      dataType="dbTime2"
+                      name="arrival hour"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrival airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="arrival airport" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[flight num]"
+                      dataType="i4"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[flight num]"
+                      name="flight num" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[departure airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[departure airport]"
+                      name="departure airport" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[departure hour]"
+                      dataType="dbTime2"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[departure hour]"
+                      name="departure hour"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrival hour]"
+                      dataType="dbTime2"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrival hour]"
+                      name="arrival hour"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrival airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrival airport]"
+                      name="arrival airport" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Dim.Paths[OLE DB Source Output]"
+              endId="Package\Dim\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Dim\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{4619e5b9-fb50-4af9-9b4d-78808201d828}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B6957FF2-7C9D-449B-ADBB-1C45C00C77E4}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Flight" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{171739f2-cb8f-4311-a5b2-9656d1a8eb40}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\STG\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Flight]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STG\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_STG1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_STG1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[flight num]"
+                      cachedDataType="i4"
+                      cachedName="flight num"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[flight num]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[flight num]" />
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[departure airport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="75"
+                      cachedName="departure airport"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departure airport]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure airport]" />
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[departure hour]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="departure hour"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departure hour]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure hour]" />
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[arrival hour]"
+                      cachedDataType="dbTime2"
+                      cachedName="arrival hour"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrival hour]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival hour]" />
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[arrival airport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="75"
+                      cachedName="arrival airport"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrival airport]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival airport]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[flight num]"
+                      dataType="i4"
+                      name="flight num" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departure airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="departure airport" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departure hour]"
+                      dataType="dbTime2"
+                      name="departure hour"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrival hour]"
+                      dataType="dbTime2"
+                      name="arrival hour"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrival airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="arrival airport" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STG\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\STG\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Flight]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STG\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-N3TDE4R.Airport_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[flight num]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[flight num]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[flight num]"
+                      name="flight num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[Airplane id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Airplane id]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[Airplane id]"
+                      name="Airplane id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure airport]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[departure airport]"
+                      length="75"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure airport]"
+                      name="departure airport"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure hour]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[departure hour]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[departure hour]"
+                      name="departure hour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival hour]"
+                      dataType="dbTime2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrival hour]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival hour]"
+                      name="arrival hour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival airport]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrival airport]"
+                      length="75"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrival airport]"
+                      name="arrival airport"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateK]"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateK]"
+                      name="DateK"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[flight num]"
+                      dataType="i4"
+                      name="flight num" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Airplane id]"
+                      dataType="i4"
+                      name="Airplane id" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[departure airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="departure airport" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[departure hour]"
+                      dataType="dbTime2"
+                      name="departure hour"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrival hour]"
+                      dataType="dbTime2"
+                      name="arrival hour"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrival airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="arrival airport" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateK]"
+                      dataType="i4"
+                      name="DateK" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[flight num]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[flight num]"
+                      name="flight num" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Airplane id]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Airplane id]"
+                      name="Airplane id" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[departure airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[departure airport]"
+                      name="departure airport" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[departure hour]"
+                      dataType="dbTime2"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[departure hour]"
+                      name="departure hour"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrival hour]"
+                      dataType="dbTime2"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrival hour]"
+                      name="arrival hour"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrival airport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrival airport]"
+                      name="arrival airport" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateK]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateK]"
+                      name="DateK" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\STG.Paths[OLE DB Source Output]"
+              endId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{33e27a40-d1e9-4e2e-84b5-6ae100aecff3}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{e793d77e-fce3-46e6-b982-799b6323cbde}"
+      DTS:From="Package\STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Dim" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Dim"
+          TopLeft="325.92857205959,249.49999990884" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="296.42857205959,103.99999990884" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\STG"
+          TopLeft="320.92857205959,179.49999990884" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="373.67857205959,145.59999990884">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.9"
+              Start="0,0"
+              End="0,26.4">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.4" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="372.42857205959,221.49999990884">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Dim">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Dim\OLE DB Destination"
+          TopLeft="473.999998092651,198.999999657273" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Dim\OLE DB Source"
+          TopLeft="501.999997466803,60.9999994188547" />
+        <EdgeLayout
+          Id="Package\Dim.Paths[OLE DB Source Output]"
+          TopLeft="576.799997466803,102.599999418855">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.1999993741512,96.4000002384186"
+              Start="0,0"
+              End="-17.1999993741512,88.9000002384186">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.2000001192093" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.2000001192093"
+                    Point2="0,48.2000001192093"
+                    Point3="-4,48.2000001192093" />
+                  <mssgle:LineSegment
+                    End="-13.1999993741512,48.2000001192093" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.1999993741512,48.2000001192093"
+                    Point2="-17.1999993741512,48.2000001192093"
+                    Point3="-17.1999993741512,52.2000001192093" />
+                  <mssgle:LineSegment
+                    End="-17.1999993741512,88.9000002384186" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.7201168745756,53.2000001192093,36.240234375,9.5732421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\STG\OLE DB Destination"
+          TopLeft="467.99999819696,183.999999731779" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\STG\OLE DB Source"
+          TopLeft="461.999998360872,48.9999994635582" />
+        <EdgeLayout
+          Id="Package\STG.Paths[OLE DB Source Output]"
+          TopLeft="537.199998360872,90.5999994635582">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.9999998360872,93.4000002682209"
+              Start="0,0"
+              End="15.9999998360872,85.9000002682209">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.7000001341105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.7000001341105"
+                    Point2="0,46.7000001341105"
+                    Point3="4,46.7000001341105" />
+                  <mssgle:LineSegment
+                    End="11.9999998360872,46.7000001341105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.9999998360872,46.7000001341105"
+                    Point2="15.9999998360872,46.7000001341105"
+                    Point3="15.9999998360872,50.7000001341105" />
+                  <mssgle:LineSegment
+                    End="15.9999998360872,85.9000002682209" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-10.1201172694564,51.7000001341105,36.240234375,9.5732421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
